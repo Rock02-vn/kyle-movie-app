@@ -1,0 +1,159 @@
+.video-container video {
+  width: 100%;
+  height: 100%;
+}
+
+.similar-list {
+  margin-top: 15px;
+  max-height: 412px;
+  overflow-y: overlay;
+}
+
+.similar-list .video {
+  display: flex;
+}
+
+.similar-list .video .image img {
+  width: 70px;
+  height: 100px;
+}
+
+.similar-list .info {
+  margin-left: 15px;
+}
+
+.rating i {
+  color: #d9bb55;
+}
+
+.movie-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+}
+
+.movie-genre {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.movie-genre .genre {
+  padding: 4px 12px;
+  background-color: var(--btn-color);
+  border-radius: 69px;
+  cursor: pointer;
+}
+
+.movie-genre .movie-description p {
+  font-size: 18px;
+}
+
+.episodes-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.episodes-list .episode {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 8px 16px;
+  font-size: 18px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: var(--btn-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.episodes-list .episode.active {
+  background-color: var(--active-color);
+}
+
+.episodes-list .episode:hover {
+  opacity: 0.8;
+}
+
+.comments-section {
+  margin-top: 25px;
+}
+
+.comment-alert,
+.comment-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 18px;
+  line-height: 20px;
+  border: 1px solid #323741;
+  padding: 0px 12px;
+  height: 48px;
+  margin: 24px 0px;
+  border-radius: 69px;
+}
+
+.comment-box input {
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 18px;
+  width: 100%;
+  color: white;
+  font-family: "Cairo", sans-serif;
+}
+
+.comment-box button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: white;
+  font-size: 22px;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+.comment-alert,
+.comment-box .avatar img {
+  width: 30px;
+  border-radius: 50%;
+}
+
+.comment-alert a {
+  color: var(--active-color);
+  cursor: pointer;
+}
+
+.comment-item {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.comment-item img {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+.comment-item .info {
+  margin-left: 10px;
+}
+
+.comment-item .info-name .name {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.comment-item .info-name .time {
+  font-weight: 100;
+  margin-left: 5px;
+  font-size: 14px;
+}
