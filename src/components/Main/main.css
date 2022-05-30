@@ -29,6 +29,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  z-index: 99;
 }
 
 .item-content-wraper::before {
