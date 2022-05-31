@@ -1,19 +1,18 @@
-import React from 'react';
+import React from "react";
 // import '../Main/main.css'
-import './HeroSlideItem.css'
-import apiConfig from '../../api/apiConfig'
+import "./HeroSlideItem.css";
+import apiConfig from "../../api/apiConfig";
+import { Link } from "react-router-dom";
 
 function HeroSlideItem(props) {
-  const { hero } = props
+  const { hero } = props;
   return (
     <>
       <img src={apiConfig.originalImage(hero.backdrop_path)} alt="" />
       <div className="overlay"></div>
       <div className="hero-slide-item-content">
         <div className="item-content-wraper">
-          <div className="item-content-title">
-            {hero.title}
-          </div>
+          <div className="item-content-title">{hero.title}</div>
           <div className="movie-infos">
             <div className="movie-info">
               <i className="bx bxs-star"></i>
@@ -30,14 +29,12 @@ function HeroSlideItem(props) {
               <span>16+</span>
             </div>
           </div>
-          <div className="item-content-description">
-            {hero.overview}
-          </div>
+          <div className="item-content-description">{hero.overview}</div>
           <div className="item-action">
-            <a href="en" className="btn btn-hover">
+            <Link to={`detail/movie/${hero.id}`} state={hero} className="btn btn-hover">
               <i className="bx bxs-right-arrow"></i>
               <span>Watch now</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

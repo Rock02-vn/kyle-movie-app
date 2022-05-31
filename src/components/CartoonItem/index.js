@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import apiConfig from '../../api/apiConfig';
 
 function CartoonItem(props) {
   const { cartoons } = props
   return (
-    < >
+    <Link to={`detail/tv/${cartoons.id}`} state={cartoons}>
       <img src={apiConfig.originalImage(cartoons.backdrop_path)} alt="" />
       <div className="movie-item-content">
         <div className="movie-item-title">
@@ -27,7 +28,7 @@ function CartoonItem(props) {
           </div>
         </div>
       </div>
-    </>
+    </Link>
   );
 }
 

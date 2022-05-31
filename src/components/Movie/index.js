@@ -1,45 +1,76 @@
-import React from 'react';
+import apiConfig from 'api/apiConfig';
+import tmdbApi, { category } from 'api/tmdbApi';
+import SimilarItem from 'components/SimilarItem';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import './movie.css'
 
 function Movie(props) {
+  const { category, id } = useParams();
+  const [movie, setMovie] = useState({})
+  const [detail, setDetail] = useState({})
+  const [genres, setGenres] = useState([])
+  const [similarMovies, setSimilarMovies] = useState([])
+  useEffect(() => {
+    const getMovieDetail = async () => {
+      const response = await tmdbApi.getVideos(category, id)
+      const response2 = await tmdbApi.similar(category, id)
+      const response3 = await tmdbApi.detail(category, id, { params: {} })
+      setMovie(response.results[response.results.length - 1])
+      setSimilarMovies(response2.results)
+      setDetail(response3)
+      setGenres(response3.genres)
+    }
+
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+
+    getMovieDetail()
+  }, [category, id])
+  console.log(genres);
+
   return (
     <div className="section">
       <div className="container">
         <div className="row">
           <div className="col-8 col-md-12 col-sm-12">
             <div className="video-container">
-              <video controls>
+              {/* <video controls>
                 <source src="https://viettrung258.work/film" />
                 Video is not supported!
-              </video>
+              </video> */}
+              <iframe title='video-detail' width="420" height="315"
+                src={`https://www.youtube.com/embed/${movie.key}`}>
+              </iframe>
             </div>
 
             <div className="movie-details">
-              <h1>Stranger Things Season 4</h1>
+              <h1>{detail.title || detail.original_name}</h1>
               <div className="movie-info">
                 <div className="rating">
                   <span className="star">
                     <i className='bx bxs-star'></i>
                   </span>
-                  <span className="score">6.9</span>
+                  <span className="score">{detail.vote_average}</span>
                 </div>
                 <div className="release">
                   <span className="calendar">
                     <i className='bx bxs-calendar'></i>
                   </span>
-                  <span className="year">2022</span>
+                  <span className="year">{detail.release_date}</span>
                 </div>
               </div>
               <div className="movie-genre">
-                <a href='=' className="genre">Drama</a>
-                <a href='-' className="genre">Sex</a>
+                {genres.map(genre => (
+                  <a href='=' className="genre">{genre.name}</a>
+                ))}
               </div>
               <div className="movie-description">
                 <p>
-                  In a small town where everyone knows everyone, a peculiar incident starts a chain of events that leads
-                  to the disappearance of a child, which begins to tear at the fabric of an otherwise peaceful community.
-                  Dark government agencies and seemingly malevolent supernatural forces converge on the town, while a few
-                  of the locals begin to understand that there's more going on than meets the eye.
+                  {detail.overview}
                 </p>
               </div>
             </div>
@@ -138,20 +169,9 @@ function Movie(props) {
                 <h2>Similar to this</h2>
               </div>
               <div className="similar-list">
-                <div className="video">
-                  <div className="image"><img
-                    src="https://images.weserv.nl/?url=https%3A%2F%2Fimg.netpop.app%2Fcover%2F20211020%2F1634697128135_e992fb03466c9266b911bddd1ed03565uiinjmSkka6JOrk4FsZmrjlNM26.jpg&w=&h=100&fit=outside"
-                    alt="" /></div>
-                  <div className="info">
-                    <div className="name">Krypton Season 2</div>
-                    <div className="rating">
-                      <span className="star">
-                        <i className='bx bxs-star'></i>
-                      </span>
-                      <span className="score">6.9</span>
-                    </div>
-                  </div>
-                </div>
+                {similarMovies.map(similarMovie => (
+                  <SimilarItem similar={similarMovie} />
+                ))}
               </div>
             </div>
           </div>

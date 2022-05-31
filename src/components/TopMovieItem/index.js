@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import apiConfig from '../../api/apiConfig';
 
 function TopMovies(props) {
   const { hero } = props;
   return (
-    <>
+    <Link to={`detail/movie/${hero.id}`} state={hero}>
       {/* <div className="movie-item"> */}
       <img src={apiConfig.originalImage(hero.backdrop_path)} alt="" />
       <div className="movie-item-content">
@@ -29,7 +30,7 @@ function TopMovies(props) {
         </div>
       </div>
       {/* </div> */}
-    </>
+    </Link>
   );
 }
 

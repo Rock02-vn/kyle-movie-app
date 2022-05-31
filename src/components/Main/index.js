@@ -9,7 +9,7 @@ import './main.css';
 
 import tmdbApi, { movieType, tvType } from '../../api/tmdbApi'
 
-import HeroSlideItem from '../HeroSlideItem/index'
+import HeroSlideItem from '../HeroSlideItem'
 import TopMovies from '../TopMovieItem';
 import LatestMovieItem from '../latestMovieItem';
 import SerieItem from '../SerieItem';
@@ -34,7 +34,6 @@ function Main(props) {
         setHeroSlides(response?.results.slice(1, 5))
         setTopMovies(response?.results.slice(10, 20))
         setLatestMovies(response?.results.slice(10, 20))
-        console.log(response.results.slice(0, 1));
       } catch (error) {
         console.log(error);
       }

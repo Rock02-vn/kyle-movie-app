@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import apiConfig from '../../api/apiConfig';
 
 function SpecialMovieItem(props) {
@@ -35,10 +36,10 @@ function SpecialMovieItem(props) {
             suscipit.
           </div>
           <div className="item-action">
-            <a href="en" className="btn btn-hover">
+            <Link to={`detail/movie/${specialMovie.id}`} state={specialMovie} className="btn btn-hover">
               <i className="bx bxs-right-arrow"></i>
               <span>Watch now</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

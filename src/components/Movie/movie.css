@@ -3,6 +3,11 @@
   height: 100%;
 }
 
+.video-container iframe {
+  width: 100%;
+  border: none;
+}
+
 .similar-list {
   margin-top: 15px;
   max-height: 412px;
@@ -16,6 +21,7 @@
 .similar-list .video .image img {
   width: 70px;
   height: 100px;
+  cursor: pointer;
 }
 
 .similar-list .info {

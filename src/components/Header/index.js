@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './header.css'
 
@@ -8,11 +9,11 @@ function Header(props) {
     <div className="nav-wrapper">
       <div className="container">
         <div className="nav">
-          <a href="hihi" className="logo">
+          <Link to='/' className="logo">
             <i className='bx bx-movie-play bx-tada main-color'></i>Ky<span className="main-color">l</span>e
-          </a>
+          </Link>
           <ul className="nav-menu" id="nav-menu">
-            <li><a href="hihi">Home</a></li>
+            <li><Link to='/'>Home</Link></li>
             <li><a href="hihi">Genre</a></li>
             <li><a href="hihi">Movies</a></li>
             <li><a href="hihi">Series</a></li>
