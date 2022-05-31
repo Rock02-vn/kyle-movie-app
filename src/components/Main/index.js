@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import SwiperCore, { Autoplay, Lazy } from 'swiper';
+import 'swiper/css/navigation';
+import 'swiper/css/lazy';
+import SwiperCore, { Autoplay, Lazy, Navigation } from 'swiper';
 
 import './main.css';
 
 import tmdbApi, { movieType, tvType } from '../../api/tmdbApi'
 
 import HeroSlideItem from '../HeroSlideItem/index'
-import Transformer from '../../assets/images/transformer-banner.jpg'
 import TopMovies from '../TopMovieItem';
 import LatestMovieItem from '../latestMovieItem';
 import SerieItem from '../SerieItem';
 import CartoonItem from '../CartoonItem';
+import SpecialMovieItem from '../SpecialMovieItem';
 
 function Main(props) {
   const [heroSlides, setHeroSlides] = useState([])
@@ -20,8 +22,9 @@ function Main(props) {
   const [latestMovies, setLatestMovies] = useState([])
   const [seriesList, setSeriesList] = useState([])
   const [cartoonList, setCartoonList] = useState([])
+  const [specialMovie, setSpecialMovie] = useState({})
 
-  SwiperCore.use([Autoplay])
+  SwiperCore.use([Autoplay, Navigation])
 
   useEffect(() => {
     const getMoviesList = async () => {
@@ -42,6 +45,7 @@ function Main(props) {
       try {
         const response = await tmdbApi.getMoviesList(movieType.top_rated, { params })
         setTopMovies(response?.results)
+        setSpecialMovie(response?.results[15])
       } catch (error) {
         console.log(error);
       }
@@ -88,7 +92,8 @@ function Main(props) {
       <div className="hero-section">
         {/* <!-- HERO SLIDE --> */}
         <Swiper
-          modules={[Autoplay, Lazy]}
+          navigation
+          modules={[Autoplay, Lazy, Navigation]}
           autoplay={{
             delay: 2000,
             disableOnInteraction: false,
@@ -110,7 +115,7 @@ function Main(props) {
           <Swiper
             grabCursor={true}
             spaceBetween={0}
-            slidesPerView={2}
+            slidesPerView={3}
           >
             {
               topMovies.map((hero, index) => (
@@ -192,44 +197,7 @@ function Main(props) {
 
       {/* <!-- SPECIAL MOVIE SECTION --> */}
       <div className="section">
-        <div className="hero-slide-item">
-          <img src={Transformer} alt="" />
-          <div className="overlay"></div>
-          <div className="hero-slide-item-content">
-            <div className="item-content-wraper">
-              <div className="item-content-title">
-                Transformer
-              </div>
-              <div className="movie-infos">
-                <div className="movie-info">
-                  <i className="bx bxs-star"></i>
-                  <span>9.5</span>
-                </div>
-                <div className="movie-info">
-                  <i className="bx bxs-time"></i>
-                  <span>120 mins</span>
-                </div>
-                <div className="movie-info">
-                  <span>HD</span>
-                </div>
-                <div className="movie-info">
-                  <span>16+</span>
-                </div>
-              </div>
-              <div className="item-content-description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, possimus eius. Deserunt non odit, cum vero
-                reprehenderit laudantium odio vitae autem quam, incidunt molestias ratione mollitia accusantium, facere ab
-                suscipit.
-              </div>
-              <div className="item-action">
-                <a href="en" className="btn btn-hover">
-                  <i className="bx bxs-right-arrow"></i>
-                  <span>Watch now</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+        <SpecialMovieItem specialMovie={specialMovie} />
       </div>
       {/* <!-- END SPECIAL MOVIE SECTION --> */}
 
