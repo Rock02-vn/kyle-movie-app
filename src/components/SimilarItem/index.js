@@ -10,7 +10,7 @@ function SimilarItem(props) {
         src={apiConfig.w500Image(similar.poster_path)}
         alt="" /></Link>
       <div className="info">
-        <div className="name">{similar.title ? similar.title : similar.name}</div>
+        <div className="name">{similar.title || similar.name}</div>
         <div className="rating">
           <span className="star">
             <i className='bx bxs-star'></i>

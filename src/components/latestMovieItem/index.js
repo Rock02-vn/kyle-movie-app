@@ -6,7 +6,7 @@ function LatestMovieItem(props) {
   const { hero } = props;
 
   return (
-    <Link to={`detail/movie/${hero.id}`} state={hero}>
+    <Link to={`/detail/movie/${hero.id}`} state={hero} >
       <img src={apiConfig.originalImage(hero.backdrop_path)} alt="" />
       <div className="movie-item-content">
         <div className="movie-item-title">

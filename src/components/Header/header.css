@@ -185,21 +185,25 @@ a.movie-item:hover {
 
 @media only screen and (max-width: 1280px) {
   html {
-    font-size: 14px;
+    font-size: 14px !important;
   }
 
   .hero-slide-item {
-    padding-top: 50%;
+    padding-top: 50% !important;
   }
 
   .item-content-wraper {
-    width: 50%;
+    width: 50% !important;
+  }
+
+  .item-content-description {
+    -webkit-line-clamp: 2 !important;
   }
 }
 
 @media only screen and (max-width: 850px) {
   html {
-    font-size: 12px;
+    font-size: 12px !important;
   }
 
   .container {
@@ -208,19 +212,23 @@ a.movie-item:hover {
 
   .hero-slide-item {
     height: max-content;
-    padding-top: unset;
+    padding-top: unset !important;
   }
 
   .item-content-wraper {
-    width: 100%;
+    width: 100% !important;
     height: 100%;
     padding-bottom: 20px;
     padding-right: 5rem;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.2) !important;
+  }
+
+  .item-content-description {
+    -webkit-line-clamp: 2 !important;
   }
 
   .hero-slide-item-content {
-    position: relative;
+    position: relative !important;
   }
 
   .hero-slide-item img {

@@ -6,7 +6,7 @@ function SerieItem(props) {
   const { series } = props;
 
   return (
-    <Link to={`detail/tv/${series.id}`} state={series}>
+    <Link to={`/detail/tv/${series.id}`} state={series}>
       <img src={apiConfig.originalImage(series.backdrop_path)} alt="" />
       <div className="movie-item-content">
         <div className="movie-item-title">

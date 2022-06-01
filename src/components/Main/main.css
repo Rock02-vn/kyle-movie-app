@@ -78,6 +78,11 @@
   font-size: 1.15rem;
   margin-top: var(--space-top);
   line-height: 1.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .item-action {
@@ -153,7 +158,6 @@
 
 .movie-item {
   display: block;
-  position: relative;
   overflow: hidden;
   padding-top: 140%;
   cursor: pointer;

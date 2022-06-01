@@ -5,6 +5,13 @@ import './header.css'
 
 
 function Header(props) {
+  const handleMenu = () => {
+    const btn = document.getElementById('hamburger-menu');
+    btn.classList.toggle('active');
+    document.getElementById('nav-menu').classList.toggle('active');
+    console.log(btn);
+  }
+
   return (
     <div className="nav-wrapper">
       <div className="container">
@@ -29,7 +36,7 @@ function Header(props) {
             </li>
           </ul>
 
-          <div className="hamburger-menu" id="hamburger-menu">
+          <div className="hamburger-menu" id="hamburger-menu" onClick={handleMenu}>
             <div className="hamburger"></div>
           </div>
         </div>

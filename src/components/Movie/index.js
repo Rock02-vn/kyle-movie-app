@@ -1,5 +1,4 @@
-import apiConfig from 'api/apiConfig';
-import tmdbApi, { category } from 'api/tmdbApi';
+import tmdbApi from 'api/tmdbApi';
 import SimilarItem from 'components/SimilarItem';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -30,7 +29,6 @@ function Movie(props) {
 
     getMovieDetail()
   }, [category, id])
-  console.log(genres);
 
   return (
     <div className="section">
@@ -65,7 +63,7 @@ function Movie(props) {
               </div>
               <div className="movie-genre">
                 {genres.map(genre => (
-                  <a href='=' className="genre">{genre.name}</a>
+                  <a href='=' className="genre" key={genre.id}>{genre.name}</a>
                 ))}
               </div>
               <div className="movie-description">
@@ -82,6 +80,21 @@ function Movie(props) {
               <a href="4" className="episode">3</a>
             </div>
 
+          </div>
+          <div className="col-4 col-md-12 col-sm-12">
+            <div className="similar-container">
+              <div className="header">
+                <h2>Similar to this</h2>
+              </div>
+              <div className="similar-list">
+                {similarMovies.map(similarMovie => (
+                  <SimilarItem similar={similarMovie} key={similarMovie.id} />
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* Comment section */}
+          <div className="col-8 col-md-12 col-sm-12">
             <div className="comments-section">
               <h2>Comments</h2>
 
@@ -122,56 +135,6 @@ function Movie(props) {
                     aliquid dolorum nulla excepturi quod totam illo.
                   </div>
                 </div>
-              </div>
-              <div className="comment-item">
-                <img
-                  src="https://images.weserv.nl/?url=https%3A%2F%2Flh3.googleusercontent.com%2Fa-%2FAOh14GhUigrReywgtRTgeW77KiP1up9ro5ruHpIla3bmnQ%3Ds96-c&w=50&h=50&fit=outside"
-                  alt="" />
-                <div className="info">
-                  <div className="info-name">
-                    <span className="name">Én Én</span>
-                    <span className="time">5 seconds ago</span>
-                  </div>
-                  <div className="content">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores, esse tempore deleniti dolore
-                    laborum obcaecati assumenda quae eaque iusto quod quo quasi sed. Dicta itaque numquam libero aperiam
-                    tempora beatae.
-                    Doloribus veritatis ipsam itaque nesciunt ea inventore provident exercitationem consectetur totam.
-                    Natus, neque perspiciatis. Sequi asperiores perferendis possimus mollitia! Numquam doloremque ipsa ea
-                    aliquid dolorum nulla excepturi quod totam illo.
-                  </div>
-                </div>
-              </div>
-              <div className="comment-item">
-                <img
-                  src="https://images.weserv.nl/?url=https%3A%2F%2Flh3.googleusercontent.com%2Fa-%2FAOh14GhUigrReywgtRTgeW77KiP1up9ro5ruHpIla3bmnQ%3Ds96-c&w=50&h=50&fit=outside"
-                  alt="" />
-                <div className="info">
-                  <div className="info-name">
-                    <span className="name">Én Én</span>
-                    <span className="time">Just now</span>
-                  </div>
-                  <div className="content">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores, esse tempore deleniti dolore
-                    laborum obcaecati assumenda quae eaque iusto quod quo quasi sed. Dicta itaque numquam libero aperiam
-                    tempora beatae.
-                    Doloribus veritatis ipsam itaque nesciunt ea inventore provident exercitationem consectetur totam.
-                    Natus, neque perspiciatis. Sequi asperiores perferendis possimus mollitia! Numquam doloremque ipsa ea
-                    aliquid dolorum nulla excepturi quod totam illo.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col-4 col-md-12 col-sm-12">
-            <div className="similar-container">
-              <div className="header">
-                <h2>Similar to this</h2>
-              </div>
-              <div className="similar-list">
-                {similarMovies.map(similarMovie => (
-                  <SimilarItem similar={similarMovie} />
-                ))}
               </div>
             </div>
           </div>

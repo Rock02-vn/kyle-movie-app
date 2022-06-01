@@ -102,7 +102,7 @@ function Main(props) {
           slidesPerView={1}
         >
           {heroSlides.map((hero, index) => (
-            <SwiperSlide key={hero.id}>
+            <SwiperSlide className="hero-slide-item" key={hero.id}>
               <HeroSlideItem hero={hero} />
             </SwiperSlide>
           ))}
@@ -115,6 +115,14 @@ function Main(props) {
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={3}
+            breakpoints={{
+              300: {
+                slidesPerView: 2,
+              },
+              1240: {
+                slidesPerView: 4
+              }
+            }}
           >
             {
               topMovies.map((hero, index) => (
@@ -139,6 +147,18 @@ function Main(props) {
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={4}
+            breakpoints={{
+              300: {
+
+                slidesPerView: 2,
+              },
+              800: {
+                slidesPerView: 3,
+              },
+              1280: {
+                slidesPerView: 4,
+              },
+            }}
           >
             {latestMovies.map((hero, index) => (
               <SwiperSlide key={hero.id}>
@@ -161,6 +181,17 @@ function Main(props) {
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={4}
+            breakpoints={{
+              300: {
+                slidesPerView: 2,
+              },
+              800: {
+                slidesPerView: 3,
+              },
+              1240: {
+                slidesPerView: 4,
+              },
+            }}
           >
             {seriesList.map((series, index) => (
               <SwiperSlide key={series.id}>
@@ -183,6 +214,17 @@ function Main(props) {
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={4}
+            breakpoints={{
+              300: {
+                slidesPerView: 2,
+              },
+              800: {
+                slidesPerView: 3,
+              },
+              1240: {
+                slidesPerView: 4,
+              },
+            }}
           >
             {cartoonList.map((cartoons, index) => (
               <SwiperSlide key={cartoons.id}>

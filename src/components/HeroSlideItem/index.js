@@ -1,6 +1,5 @@
 import React from "react";
-// import '../Main/main.css'
-import "./HeroSlideItem.css";
+import '../Main/main.css'
 import apiConfig from "../../api/apiConfig";
 import { Link } from "react-router-dom";
 
@@ -31,7 +30,7 @@ function HeroSlideItem(props) {
           </div>
           <div className="item-content-description">{hero.overview}</div>
           <div className="item-action">
-            <Link to={`detail/movie/${hero.id}`} state={hero} className="btn btn-hover">
+            <Link to={`/detail/movie/${hero.id}`} state={hero} className="btn btn-hover">
               <i className="bx bxs-right-arrow"></i>
               <span>Watch now</span>
             </Link>
