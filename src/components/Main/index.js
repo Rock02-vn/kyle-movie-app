@@ -31,7 +31,7 @@ function Main(props) {
       const params = { page: 1 }
       try {
         const response = await tmdbApi.getMoviesList(movieType.popular, { params })
-        setHeroSlides(response?.results.slice(1, 5))
+        setHeroSlides(response?.results.slice(0, 5))
         setTopMovies(response?.results.slice(10, 20))
         setLatestMovies(response?.results.slice(10, 20))
       } catch (error) {
@@ -144,6 +144,8 @@ function Main(props) {
             latest movies
           </div>
           <Swiper
+            navigation
+            modules={Navigation}
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={4}
@@ -178,6 +180,8 @@ function Main(props) {
             latest series
           </div>
           <Swiper
+            navigation
+            modules={Navigation}
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={4}
@@ -211,6 +215,8 @@ function Main(props) {
             latest cartoons
           </div>
           <Swiper
+            navigation
+            modules={Navigation}
             grabCursor={true}
             spaceBetween={0}
             slidesPerView={4}

@@ -1,13 +1,13 @@
 import Footer from 'components/Footer';
 import Header from 'components/Header';
-import Movie from 'components/Movie';
+import MovieDetail from 'components/MovieDetail';
 import React from 'react';
 
 const Detail = () => {
   return (
     <>
       <Header />
-      <Movie />
+      <MovieDetail />
       <Footer />
     </>
   );

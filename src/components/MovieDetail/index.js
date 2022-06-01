@@ -29,6 +29,9 @@ function Movie(props) {
 
     getMovieDetail()
   }, [category, id])
+  console.log(detail);
+  const episodes = Array.from({ length: detail?.next_episode_to_air?.episode_number || detail?.number_of_episodes }, (_, i) => i + 1)
+  console.log(episodes);
 
   return (
     <div className="section">
@@ -41,7 +44,7 @@ function Movie(props) {
                 Video is not supported!
               </video> */}
               <iframe title='video-detail' width="420" height="315"
-                src={`https://www.youtube.com/embed/${movie.key}`}>
+                src={`https://www.youtube-nocookie.com/embed/${movie.key}`}>
               </iframe>
             </div>
 
@@ -72,13 +75,17 @@ function Movie(props) {
                 </p>
               </div>
             </div>
-
-            <h2>Episodes</h2>
-            <div className="episodes-list">
-              <a href="2" className="episode active">1</a>
-              <a href="3" className="episode">2</a>
-              <a href="4" className="episode">3</a>
-            </div>
+            {
+              category === 'tv' &&
+              <>
+                <h2>Episodes</h2>
+                <div className="episodes-list">
+                  <a href="2" className="episode active">1</a>
+                  <a href="3" className="episode">2</a>
+                  <a href="4" className="episode">3</a>
+                </div>
+              </>
+            }
 
           </div>
           <div className="col-4 col-md-12 col-sm-12">
