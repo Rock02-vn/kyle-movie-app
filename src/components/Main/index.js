@@ -7,21 +7,16 @@ import SwiperCore, { Autoplay, Lazy, Navigation } from 'swiper';
 
 import './main.css';
 
-import tmdbApi, { movieType, tvType } from '../../api/tmdbApi'
+import tmdbApi, { category, movieType, tvType } from '../../api/tmdbApi'
 
 import HeroSlideItem from '../HeroSlideItem'
 import TopMovies from '../TopMovieItem';
-import LatestMovieItem from '../latestMovieItem';
-import SerieItem from '../SerieItem';
-import CartoonItem from '../CartoonItem';
 import SpecialMovieItem from '../SpecialMovieItem';
+import MovieSwiper from 'components/MovieSwiper';
 
 function Main(props) {
   const [heroSlides, setHeroSlides] = useState([])
   const [topMovies, setTopMovies] = useState([])
-  const [latestMovies, setLatestMovies] = useState([])
-  const [seriesList, setSeriesList] = useState([])
-  const [cartoonList, setCartoonList] = useState([])
   const [specialMovie, setSpecialMovie] = useState({})
 
   SwiperCore.use([Autoplay, Navigation])
@@ -32,59 +27,14 @@ function Main(props) {
       try {
         const response = await tmdbApi.getMoviesList(movieType.popular, { params })
         setHeroSlides(response?.results.slice(0, 5))
-        setTopMovies(response?.results.slice(10, 20))
-        setLatestMovies(response?.results.slice(10, 20))
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    const getTopMovies = async () => {
-      const params = { page: 1 }
-      try {
-        const response = await tmdbApi.getMoviesList(movieType.top_rated, { params })
-        setTopMovies(response?.results)
         setSpecialMovie(response?.results[15])
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    const getLatestMovies = async () => {
-      const params = { page: 1 }
-      try {
-        const response = await tmdbApi.getMoviesList(movieType.upcoming, { params })
-        setLatestMovies(response?.results)
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    const getSeriesList = async () => {
-      const params = { page: 1 }
-      try {
-        const response = await tmdbApi.getTvList(tvType.popular, { params })
-        setSeriesList(response?.results)
-      } catch (error) {
-        console.log(error);
-      }
-    }
-
-    const getCartoonList = async () => {
-      const params = { page: 2 }
-      try {
-        const response = await tmdbApi.getTvList(tvType.top_rated, { params })
-        setCartoonList(response?.results)
+        setTopMovies(response?.results.slice(10, 20))
       } catch (error) {
         console.log(error);
       }
     }
 
     getMoviesList()
-    getLatestMovies()
-    getTopMovies()
-    getSeriesList()
-    getCartoonList()
   }, [])
   return (
     <>
@@ -143,31 +93,7 @@ function Main(props) {
           <div className="section-header">
             latest movies
           </div>
-          <Swiper
-            navigation
-            modules={Navigation}
-            grabCursor={true}
-            spaceBetween={0}
-            slidesPerView={4}
-            breakpoints={{
-              300: {
-
-                slidesPerView: 2,
-              },
-              800: {
-                slidesPerView: 3,
-              },
-              1280: {
-                slidesPerView: 4,
-              },
-            }}
-          >
-            {latestMovies.map((hero, index) => (
-              <SwiperSlide key={hero.id}>
-                <LatestMovieItem hero={hero} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <MovieSwiper category={category.movie} type={movieType.upcoming} />
 
         </div>
       </div>
@@ -179,31 +105,7 @@ function Main(props) {
           <div className="section-header">
             latest series
           </div>
-          <Swiper
-            navigation
-            modules={Navigation}
-            grabCursor={true}
-            spaceBetween={0}
-            slidesPerView={4}
-            breakpoints={{
-              300: {
-                slidesPerView: 2,
-              },
-              800: {
-                slidesPerView: 3,
-              },
-              1240: {
-                slidesPerView: 4,
-              },
-            }}
-          >
-            {seriesList.map((series, index) => (
-              <SwiperSlide key={series.id}>
-                <SerieItem series={series} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-
+          <MovieSwiper category={category.tv} type={tvType.popular} />
         </div>
       </div>
       {/* <!-- END LATEST SERIES SECTION --> */}
@@ -214,30 +116,7 @@ function Main(props) {
           <div className="section-header">
             latest cartoons
           </div>
-          <Swiper
-            navigation
-            modules={Navigation}
-            grabCursor={true}
-            spaceBetween={0}
-            slidesPerView={4}
-            breakpoints={{
-              300: {
-                slidesPerView: 2,
-              },
-              800: {
-                slidesPerView: 3,
-              },
-              1240: {
-                slidesPerView: 4,
-              },
-            }}
-          >
-            {cartoonList.map((cartoons, index) => (
-              <SwiperSlide key={cartoons.id}>
-                <CartoonItem cartoons={cartoons} />
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <MovieSwiper category={category.tv} type={tvType.top_rated} />
         </div>
       </div>
       {/* <!-- END LATEST CARTOONS SECTION --> */}
