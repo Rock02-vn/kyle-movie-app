@@ -67,6 +67,7 @@ function MovieGrid(props) {
       document.removeEventListener("keyup", enterEvent);
     };
   }, [goToSearch]);
+  console.log("hihi");
 
   return (
     <>
