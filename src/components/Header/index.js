@@ -29,10 +29,6 @@ function Header(props) {
                 <span>Sign in</span>
               </a>
             </li>
-            <li style={{ position: "relative" }}>
-              <input type="text" placeholder="Search..." className="header-search-input" />
-              <a href="hihi" className="header-btn-search"><i className='bx bx-search'></i></a>
-            </li>
           </ul>
 
           <div className="hamburger-menu" id="hamburger-menu" onClick={handleMenu}>

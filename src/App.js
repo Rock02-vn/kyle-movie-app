@@ -15,6 +15,7 @@ function App() {
           <Route path='/home' element={<Home />} />
           <Route path='/detail/:category/:id' element={<Detail />} />
           <Route path='/:category' element={<Catalog />} />
+          <Route path='/:category/search/:keyword' element={<Catalog />} />
           <Route path='/about' element={<About />} />
           <Route path='/' element={<Navigate to='/home' />} />
         </Routes>
