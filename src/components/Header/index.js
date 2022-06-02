@@ -21,7 +21,8 @@ function Header(props) {
           </Link>
           <ul className="nav-menu" id="nav-menu">
             <li><Link to='/'>Home</Link></li>
-            <li><Link to='/movies'>Movies</Link></li>
+            <li><Link to='/movie'>Movies</Link></li>
+            <li><Link to='/tv'>Tv Series</Link></li>
             <li><Link to='/about'>About</Link></li>
             <li>
               <a href="hihi" className="btn btn-hover">

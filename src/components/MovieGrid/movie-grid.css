@@ -1,0 +1,32 @@
+.movie-grid-h1 {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.item-grid {
+  display: block;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.button-load-more {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-load-more > button {
+  height: 40px;
+  padding: 8px 16px;
+  font-size: 20px;
+  line-height: 20px;
+  border-radius: 4px;
+  margin-top: 10px;
+  background-color: rgb(183, 65, 65);
+  color: #fff;
+  border: none;
+  outline: none;
+  font-family: "Cairo", sans-serif;
+  cursor: pointer;
+}

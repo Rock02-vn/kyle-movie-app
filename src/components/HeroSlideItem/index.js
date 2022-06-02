@@ -1,5 +1,4 @@
 import React from "react";
-import '../Main/main.css'
 import apiConfig from "../../api/apiConfig";
 import { Link } from "react-router-dom";
 

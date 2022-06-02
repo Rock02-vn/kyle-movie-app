@@ -25,11 +25,10 @@ function MovieItem(props) {
     const getItems = async () => {
       if (category === 'movie') {
         response = await tmdbApi.getMoviesList(type, { params })
-        setItemList(response.results)
       } else {
         response = await tmdbApi.getTvList(type, { params })
-        setItemList(response.results)
       }
+      setItemList(response.results)
     }
 
     getItems()
@@ -55,11 +54,11 @@ function MovieItem(props) {
           },
         }}
       >
-        {itemList.map((item, index) => (
-          <SwiperSlide key={item.id}>
+        {itemList.map((item, index) => {
+          return item.backdrop_path !== null && <SwiperSlide key={item.id}>
             <MovieSwiperItem category={category} item={item} />
           </SwiperSlide>
-        ))}
+        })}
       </Swiper>
     </>
   );
