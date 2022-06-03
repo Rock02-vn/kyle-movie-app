@@ -5,6 +5,7 @@ import Home from "pages/Home";
 import { Navigate, Route, Routes } from "react-router-dom";
 import About from "pages/About";
 import Catalog from "pages/Catalog";
+import Login from "pages/Login";
 const Detail = React.lazy(() => import('pages/Detail'))
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path='/:category' element={<Catalog />} />
           <Route path='/:category/search/:keyword' element={<Catalog />} />
           <Route path='/about' element={<About />} />
+          <Route path='/login' element={<Login />} />
           <Route path='/' element={<Navigate to='/home' />} />
         </Routes>
       </React.Suspense>

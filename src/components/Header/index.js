@@ -25,9 +25,9 @@ function Header(props) {
             <li><Link to='/tv'>Tv Series</Link></li>
             <li><Link to='/about'>About</Link></li>
             <li>
-              <a href="hihi" className="btn btn-hover">
+              <Link to='/login' className="btn btn-hover">
                 <span>Sign in</span>
-              </a>
+              </Link>
             </li>
           </ul>
 

@@ -61,7 +61,7 @@ function Movie(props) {
                     <span className="calendar">
                       <i className='bx bxs-calendar'></i>
                     </span>
-                    <span className="year">{detail.release_date}</span>
+                    <span className="year">{detail.release_date || detail.first_air_date}</span>
                   </div>
                 </div>
                 <div className="movie-genre">
@@ -81,7 +81,7 @@ function Movie(props) {
                   <h2>Episodes</h2>
                   <div className="episodes-list">
                     {episodesTv.map(episode => (
-                      <Link to={{ pathname: `?episode=${episode}` }} activeClassName='active' className="episode" key={episode}>{episode}</Link>
+                      <Link to={{ pathname: `?episode=${episode}` }} activeclassname='active' className="episode" key={episode}>{episode}</Link>
                     ))}
                   </div>
                 </>

@@ -8,7 +8,7 @@ const MovieSwiperItem = ({ category, item }) => {
     <>
       {item.backdrop_path !== null &&
         <Link to={`/detail/${category}/${item.id}`} state={item} className="item-grid" >
-          <img src={apiConfig.w500Image(item.backdrop_path)} alt={item.backdrop_path} />
+          <img src={apiConfig.w500Image(item.backdrop_path)} alt={item.name || item.title} />
           <div className="movie-item-content">
             <div className="movie-item-title">
               {item.name || item.title}

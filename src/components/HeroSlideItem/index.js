@@ -6,7 +6,7 @@ function HeroSlideItem(props) {
   const { hero } = props;
   return (
     <>
-      <img src={apiConfig.originalImage(hero.backdrop_path)} alt="" />
+      <img src={apiConfig.originalImage(hero.backdrop_path)} alt={hero.title} />
       <div className="overlay"></div>
       <div className="hero-slide-item-content">
         <div className="item-content-wraper">

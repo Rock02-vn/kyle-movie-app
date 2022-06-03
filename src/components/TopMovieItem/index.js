@@ -7,7 +7,7 @@ function TopMovies(props) {
   return (
     <Link to={`/detail/movie/${hero.id}`} state={hero}>
       {/* <div className="movie-item"> */}
-      <img src={apiConfig.originalImage(hero.backdrop_path)} alt="" />
+      <img src={apiConfig.originalImage(hero.backdrop_path)} alt={hero.title} />
       <div className="movie-item-content">
         <div className="movie-item-title">
           {hero.title}

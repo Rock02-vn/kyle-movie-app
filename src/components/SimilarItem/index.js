@@ -8,7 +8,7 @@ function SimilarItem(props) {
     <div className="video" key={similar.id}>
       <Link to={`/detail/movie/${similar.id}`} className="image"><img
         src={apiConfig.w500Image(similar.poster_path)}
-        alt="" /></Link>
+        alt={similar.title || similar.name} /></Link>
       <div className="info">
         <div className="name">{similar.title || similar.name}</div>
         <div className="rating">

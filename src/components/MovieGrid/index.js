@@ -62,12 +62,18 @@ function MovieGrid(props) {
     const enterEvent = (e) => {
       if (e.keyCode === 13) goToSearch();
     };
+
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+
     document.addEventListener("keyup", enterEvent);
     return () => {
       document.removeEventListener("keyup", enterEvent);
     };
   }, [goToSearch]);
-  console.log("hihi");
 
   return (
     <>
@@ -76,7 +82,7 @@ function MovieGrid(props) {
       </h1>
 
       <div className="col-12" onTouchMove={loadMore}>
-        <div style={{ marginBottom: "25px", position: "relative" }}>
+        <div className="search-wrapper">
           <input
             type="text"
             placeholder="Search..."
@@ -93,7 +99,7 @@ function MovieGrid(props) {
             itemList.map((item) => {
               return (
                 item.backdrop_path !== null && (
-                  <div className="col-3" key={item.id}>
+                  <div className="col-3 col-md-4 col-sm-6" key={item.id}>
                     <MovieSwiperItem category={category} item={item} />
                   </div>
                 )

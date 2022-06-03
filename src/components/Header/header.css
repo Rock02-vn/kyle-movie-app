@@ -105,6 +105,13 @@ a.movie-item:hover {
   margin-right: 1rem;
 }
 
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 25px;
+}
+
 .header-search-input {
   background-color: transparent;
   border: 2px solid var(--text-color);
@@ -119,9 +126,6 @@ a.movie-item:hover {
 .header-btn-search {
   font-size: 25px;
   margin-left: 5px;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   cursor: pointer;
 }
 

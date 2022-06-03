@@ -7,7 +7,7 @@ function SpecialMovieItem(props) {
 
   return (
     <div className="hero-slide-item">
-      <img src={apiConfig.originalImage(specialMovie.backdrop_path)} alt="" />
+      <img src={apiConfig.originalImage(specialMovie.backdrop_path)} alt={specialMovie.original_title} />
       <div className="overlay"></div>
       <div className="hero-slide-item-content">
         <div className="item-content-wraper">
