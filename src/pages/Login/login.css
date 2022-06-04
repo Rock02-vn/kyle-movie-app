@@ -1,0 +1,32 @@
+.login-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+}
+
+.login-social-btn {
+  margin: 0 5px;
+  padding: 6px 14px;
+  border-radius: 2px;
+  text-indent: 30px;
+  line-height: 24px;
+  font-size: 18px;
+  color: #fff;
+  font-family: "Cairo", sans-serif;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.login-method-google {
+  background: #df5656
+    url(//theme.hstatic.net/1000370235/1000472578/14/googleplus.png?v=829)
+    no-repeat 5px center;
+}
+
+.login-method-facebook {
+  background: #546ea6
+    url(//theme.hstatic.net/1000370235/1000472578/14/facebook.png?v=829)
+    no-repeat 5px center;
+}

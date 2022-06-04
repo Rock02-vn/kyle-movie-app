@@ -1,6 +1,7 @@
 import tmdbApi from 'api/tmdbApi';
 import SimilarItem from 'components/SimilarItem';
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
 import './movie.css'
 
@@ -10,6 +11,9 @@ function Movie(props) {
   const [detail, setDetail] = useState({})
   const [genres, setGenres] = useState([])
   const [similarMovies, setSimilarMovies] = useState([])
+
+  const isUser = useSelector((state) => state.auth.currentUser);
+
   useEffect(() => {
     const getMovieDetail = async () => {
       const response = await tmdbApi.getVideos(category, id)
@@ -30,7 +34,6 @@ function Movie(props) {
     getMovieDetail()
   }, [category, id])
   const episodesTv = Array.from({ length: detail?.next_episode_to_air?.episode_number || detail?.number_of_episodes }, (_, i) => i + 1)
-  console.log(detail);
 
   return (
     <div className="section">
@@ -105,22 +108,36 @@ function Movie(props) {
               <div className="comments-section">
                 <h2>Comments</h2>
 
-                {/* <!-- <div className="comment-alert">
-          <div className="avatar">
-            <img src="https://filmhot.live/default-avatar.png" alt="">
-          </div>
-          <p>You need to <a>Sign in</a> to comment !</p>
-        </div> --> */}
+                {/* When user logged in */}
+                {isUser &&
+                  <form className="comment-box">
+                    <div className="avatar">
+                      <img
+                        style={{
+                          width: "30px",
+                          borderRadius: "50%"
+                        }}
+                        src={isUser.photoURL} alt="" />
+                    </div>
+                    <input type="text" placeholder="Comment what yout think..." />
+                    <button>
+                      <i className='bx bxs-send'></i>
+                    </button>
+                  </form>
+                }
 
-                <form className="comment-box">
-                  <div className="avatar">
-                    <img src="https://filmhot.live/default-avatar.png" alt="" />
+                {/* When user not logged in*/}
+                {!isUser &&
+                  <div className="comment-alert">
+                    <div className="avatar">
+                      <img style={{
+                        width: "30px",
+                        borderRadius: "50%"
+                      }} src="https://filmhot.live/default-avatar.png" alt="" />
+                    </div>
+                    <p>You need to <Link to='/login'>Sign in</Link> to comment !</p>
                   </div>
-                  <input type="text" placeholder="Comment what yout think..." />
-                  <button>
-                    <i className='bx bxs-send'></i>
-                  </button>
-                </form>
+                }
 
                 {/* <h4 style="text-align:center">No one has commented </h4>  */}
 

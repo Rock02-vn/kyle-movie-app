@@ -1,11 +1,11 @@
 import React from "react";
-import "./App.css";
 import './grid.css';
-import Home from "pages/Home";
 import { Navigate, Route, Routes } from "react-router-dom";
+import Home from "pages/Home";
 import About from "pages/About";
 import Catalog from "pages/Catalog";
 import Login from "pages/Login";
+
 const Detail = React.lazy(() => import('pages/Detail'))
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<Navigate to='/home' />} />
+          {/* <Route path='/' element={<Home />} /> */}
         </Routes>
       </React.Suspense>
     </>

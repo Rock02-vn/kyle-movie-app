@@ -126,12 +126,6 @@
   cursor: pointer;
 }
 
-.comment-alert,
-.comment-box .avatar img {
-  width: 30px;
-  border-radius: 50%;
-}
-
 .comment-alert a {
   color: var(--active-color);
   cursor: pointer;
