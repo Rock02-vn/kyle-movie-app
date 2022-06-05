@@ -2,6 +2,7 @@ import { getAuth, signOut } from "firebase/auth";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { removeUser } from "redux/auth/authSlice";
 
 import "./header.css";
@@ -21,6 +22,7 @@ function Header(props) {
     try {
       await signOut(auth);
       dispatch(removeUser())
+      return toast.warn("User log out!");
     } catch (err) {
       console.log('lỗi log out', err);
     }
