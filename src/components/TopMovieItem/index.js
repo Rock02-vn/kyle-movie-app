@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import apiConfig from '../../api/apiConfig';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function TopMovies(props) {
   const { hero } = props;
   return (
     <Link to={`/detail/movie/${hero.id}`} state={hero}>
       {/* <div className="movie-item"> */}
-      <img src={apiConfig.originalImage(hero.backdrop_path)} alt={hero.title} />
+      <LazyLoadImage src={apiConfig.originalImage(hero.backdrop_path)} alt={hero.title} />
       <div className="movie-item-content">
         <div className="movie-item-title">
           {hero.title}

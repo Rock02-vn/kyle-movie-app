@@ -6,20 +6,32 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import "./movie.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
-function Movie(props) {
+import {
+  collection,
+  query,
+  where,
+  onSnapshot,
+  getFirestore,
+  addDoc,
+} from "firebase/firestore";
+
+function MovieDetail(props) {
   const { category, id } = useParams();
   const [movie, setMovie] = useState({});
   const [detail, setDetail] = useState({});
   const [genres, setGenres] = useState([]);
-  const [similarMovies, setSimilarMovies] = useState([]);
   const [comments, setComments] = useState([]);
+  const [similarMovies, setSimilarMovies] = useState([]);
   const [commentContent, setCommentContent] = useState("");
 
   const isUser = useSelector((state) => state.auth.currentUser);
-  const commentBaseUrl = "https://json-api-public.herokuapp.com/api/comments";
   const debounced = useDebounce(commentContent, 300);
 
+  const db = getFirestore();
+
+  // Get episodes
   const episodesTv = Array.from(
     {
       length:
@@ -60,20 +72,35 @@ function Movie(props) {
         commentContent: debounced,
         movieId: detail.id,
       };
-      await axios.post(`${commentBaseUrl}`, data);
+      await addDoc(collection(db, "comments"), data);
       setCommentContent("");
     },
-    [debounced, detail.id]
+    [
+      debounced,
+      detail?.id,
+      isUser?.displayName,
+      isUser?.photoURL,
+      isUser?.uid,
+      db,
+    ]
   );
 
   useEffect(() => {
-    const fetchComments = async () => {
-      const res = await axios.get(`${commentBaseUrl}?movieId=${detail.id}`);
-      setComments(res.data);
+    const gettttt = async () => {
+      const q = query(
+        collection(db, "comments"),
+        where("movieId", "==", detail.id)
+      );
+      const list = [];
+      onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          list.push(doc.data());
+        });
+        setComments(list);
+      });
     };
-
-    fetchComments();
-  }, [detail.id, handlePostComment]);
+    gettttt();
+  }, [detail.id, db, debounced, handlePostComment]);
 
   useEffect(() => {
     const enterEvent = (e) => {
@@ -81,12 +108,11 @@ function Movie(props) {
     };
 
     document.addEventListener("keyup", enterEvent);
+    // Clean up
     return () => {
       document.removeEventListener("keyup", enterEvent);
     };
   }, [handlePostComment]);
-
-  console.log(comments);
 
   return (
     <div className="section">
@@ -175,7 +201,7 @@ function Movie(props) {
                 {isUser && (
                   <form className="comment-box">
                     <div className="avatar">
-                      <img
+                      <LazyLoadImage
                         style={{
                           width: "30px",
                           borderRadius: "50%",
@@ -200,7 +226,7 @@ function Movie(props) {
                 {!isUser && (
                   <div className="comment-alert">
                     <div className="avatar">
-                      <img
+                      <LazyLoadImage
                         style={{
                           width: "30px",
                           borderRadius: "50%",
@@ -215,20 +241,18 @@ function Movie(props) {
                   </div>
                 )}
 
-                {comments.map((user) => {
-                  return (
-                    <div className="comment-item" key={user.id}>
-                      <img src={user.photoUrl} alt="" />
-                      <div className="info">
-                        <div className="info-name">
-                          <span className="name">{user.displayName}</span>
-                          <span className="time">{user.createdAt}</span>
-                        </div>
-                        <div className="content">{user.commentContent}</div>
+                {comments.map((user) => (
+                  <div key={user.id} className="comment-item">
+                    <LazyLoadImage src={user.photoUrl} alt={user.photoUrl} />
+                    <div className="info">
+                      <div className="info-name">
+                        <span className="name">{user.displayName}</span>
+                        <span className="time">{user.createdAt}</span>
                       </div>
+                      <div className="content">{user.commentContent}</div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
 
                 {comments.length === 0 && (
                   <h4 style={{ textAlign: "center" }}>No one has commented</h4>
@@ -244,4 +268,4 @@ function Movie(props) {
   );
 }
 
-export default Movie;
+export default MovieDetail;

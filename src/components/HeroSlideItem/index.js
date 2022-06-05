@@ -1,12 +1,13 @@
 import React from "react";
 import apiConfig from "../../api/apiConfig";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function HeroSlideItem(props) {
   const { hero } = props;
   return (
     <>
-      <img src={apiConfig.originalImage(hero.backdrop_path)} alt={hero.title} />
+      <LazyLoadImage src={apiConfig.originalImage(hero.backdrop_path)} alt={hero.title} />
       <div className="overlay"></div>
       <div className="hero-slide-item-content">
         <div className="item-content-wraper">

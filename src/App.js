@@ -20,7 +20,6 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<Navigate to='/home' />} />
-          {/* <Route path='/' element={<Home />} /> */}
         </Routes>
       </React.Suspense>
     </>

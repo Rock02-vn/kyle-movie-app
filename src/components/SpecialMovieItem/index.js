@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import apiConfig from '../../api/apiConfig';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function SpecialMovieItem(props) {
   const { specialMovie } = props
 
   return (
     <div className="hero-slide-item">
-      <img src={apiConfig.originalImage(specialMovie.backdrop_path)} alt={specialMovie.original_title} />
+      <LazyLoadImage src={apiConfig.originalImage(specialMovie.backdrop_path)} alt={specialMovie.original_title} />
       <div className="overlay"></div>
       <div className="hero-slide-item-content">
         <div className="item-content-wraper">
