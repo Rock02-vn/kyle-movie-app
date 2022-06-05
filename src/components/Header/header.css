@@ -251,6 +251,11 @@ a.movie-item:hover {
 
   .item-content-title {
     font-size: 3rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .hamburger-menu {
