@@ -214,14 +214,8 @@ a.movie-item:hover {
     padding: 0 15px;
   }
 
-  .movie-item-content,
-  .movie-item-content::before {
-    background: transparent !important;
-  }
-
-  .movie-item-content::before {
-    width: 0 !important;
-    height: 0 !important;
+  .movie-infos {
+    display: none !important;
   }
 
   .hero-slide-item {
