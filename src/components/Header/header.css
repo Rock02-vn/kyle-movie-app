@@ -214,6 +214,11 @@ a.movie-item:hover {
     padding: 0 15px;
   }
 
+  .movie-item-content,
+  .movie-item-content::before {
+    background: transparent !important;
+  }
+
   .hero-slide-item {
     height: max-content;
     padding-top: unset !important;
@@ -221,7 +226,7 @@ a.movie-item:hover {
 
   .item-content-wraper {
     width: 100% !important;
-    height: 400px;
+    height: 278px;
     padding-bottom: 20px;
     padding-right: 5rem;
     background-color: rgba(0, 0, 0, 0.2) !important;
