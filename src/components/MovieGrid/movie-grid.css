@@ -5,9 +5,10 @@
 }
 
 .item-grid {
-  display: block;
+  display: flex;
   position: relative;
   margin-bottom: 16px;
+  flex: 1;
 }
 
 .button-load-more {

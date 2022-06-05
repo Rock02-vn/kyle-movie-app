@@ -219,6 +219,11 @@ a.movie-item:hover {
     background: transparent !important;
   }
 
+  .movie-item-content::before {
+    width: 0 !important;
+    height: 0 !important;
+  }
+
   .hero-slide-item {
     height: max-content;
     padding-top: unset !important;
@@ -271,5 +276,14 @@ a.movie-item:hover {
 
   .nav-menu.active {
     left: 0;
+  }
+
+  .movie-item-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px !important;
   }
 }
