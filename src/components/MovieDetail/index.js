@@ -1,5 +1,4 @@
 import tmdbApi from "api/tmdbApi";
-import axios from "axios";
 import SimilarItem from "components/SimilarItem";
 import useDebounce from "hooks/useDebounce";
 import React, { useCallback, useEffect, useState } from "react";
@@ -153,9 +152,9 @@ function MovieDetail(props) {
                 </div>
                 <div className="movie-genre">
                   {genres.map((genre) => (
-                    <a href="=" className="genre" key={genre.id}>
+                    <span href="=" className="genre" key={genre.id}>
                       {genre.name}
-                    </a>
+                    </span>
                   ))}
                 </div>
                 <div className="movie-description">
