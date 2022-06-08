@@ -115,8 +115,6 @@ function MovieDetail(props) {
     };
   }, [handlePostComment]);
 
-  console.log(detail);
-
   return (
     <div className="section">
       {movie ? (
