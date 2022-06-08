@@ -61,6 +61,7 @@ function MovieDetail(props) {
     getMovieDetail();
   }, [category, id]);
 
+  // Post comment
   const handlePostComment = useCallback(
     async (e) => {
       e.preventDefault();
@@ -83,7 +84,7 @@ function MovieDetail(props) {
       db,
     ]
   );
-
+  // Post comment
   useEffect(() => {
     const gettttt = async () => {
       const q = query(
@@ -101,6 +102,7 @@ function MovieDetail(props) {
     gettttt();
   }, [detail.id, db, debounced, handlePostComment]);
 
+  // Post comment
   useEffect(() => {
     const enterEvent = (e) => {
       if (e.keyCode === 13) handlePostComment();
@@ -112,6 +114,8 @@ function MovieDetail(props) {
       document.removeEventListener("keyup", enterEvent);
     };
   }, [handlePostComment]);
+
+  console.log(detail);
 
   return (
     <div className="section">
@@ -129,6 +133,7 @@ function MovieDetail(props) {
                   width="420"
                   height="315"
                   src={`https://www.youtube-nocookie.com/embed/${movie.key}`}
+                  // src={`https://2embed.org/embed/${detail.imdb_id}`}
                 ></iframe>
               </div>
 
@@ -241,7 +246,7 @@ function MovieDetail(props) {
                 )}
 
                 {comments.map((user) => (
-                  <div key={user.id} className="comment-item">
+                  <div className="comment-item" key={user.id}>
                     <LazyLoadImage src={user.photoUrl} alt={user.photoUrl} />
                     <div className="info">
                       <div className="info-name">

@@ -24,8 +24,8 @@ function MovieGrid(props) {
         const params = {};
         category === "movie"
           ? (response = await tmdbApi.getMoviesList(movieType.upcoming, {
-              params,
-            }))
+            params,
+          }))
           : (response = await tmdbApi.getTvList(tvType.popular, { params }));
       } else {
         const params = { query: keyword };
@@ -56,6 +56,7 @@ function MovieGrid(props) {
     if (debounced.trim().length > 0) {
       navigate(`/${category}/search/${debounced}`);
     }
+    setSearchText('')
   }, [category, debounced, navigate]);
 
   useEffect(() => {
@@ -94,6 +95,7 @@ function MovieGrid(props) {
             <i className="bx bx-search"></i>
           </span>
         </div>
+        {keyword && <h1 style={{ margin: "10px 0px" }}>Search for "{keyword}"</h1>}
         <div className="row">
           {itemList.length > 0 ? (
             itemList.map((item) => {
