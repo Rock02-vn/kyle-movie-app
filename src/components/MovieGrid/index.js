@@ -15,6 +15,7 @@ function MovieGrid(props) {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState();
   const [searchText, setSearchText] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let response = null;
@@ -27,6 +28,7 @@ function MovieGrid(props) {
             params,
           }))
           : (response = await tmdbApi.getTvList(tvType.popular, { params }));
+        setLoading(false)
       } else {
         const params = { query: keyword };
         response = await tmdbApi.search(category, { params });
@@ -49,7 +51,13 @@ function MovieGrid(props) {
     }
     setItemList([...itemList, ...response.results]);
     setPage(page + 1);
+    setLoading(true)
   };
+
+  useEffect(() => {
+    setLoading(false)
+  }, [itemList])
+
   const debounced = useDebounce(searchText, 300);
 
   const goToSearch = useCallback(() => {
@@ -115,7 +123,7 @@ function MovieGrid(props) {
 
       {page < totalPages ? (
         <div className="button-load-more">
-          <button onClick={loadMore}>Load more</button>
+          <button onClick={loadMore}>{loading ? "Loading..." : "Load more"}</button>
         </div>
       ) : null}
     </>
