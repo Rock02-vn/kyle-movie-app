@@ -1,10 +1,10 @@
 const firebaseConfig = {
-  apiKey: "AIzaSyBrZXWl1VdIVF0BZOrBo1f__UdYOfsSVWM",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "kyle-movie-app-352208.firebaseapp.com",
   projectId: "kyle-movie-app-352208",
   storageBucket: "kyle-movie-app-352208.appspot.com",
   messagingSenderId: "589036423970",
-  appId: "1:589036423970:web:44bef08336be25b0e7337b",
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
   measurementId: "G-XMW1Z02ZGW",
 };
 
