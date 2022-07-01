@@ -177,26 +177,30 @@ function MovieDetail(props) {
                   <p>{detail.overview}</p>
                 </div>
               </div>
-              <h2>Seasons</h2>
-              <div className="episodes-list">
-                {detail?.seasons?.map((_, se) => (
-                  <Link
-                    to={{ pathname: `?episode=${se}` }}
-                    className="episode"
-                    style={season - 1 === se ? {
-                      backgroundColor: '#0d90f3'
-                    } : {}}
-                    key={se}
-                    onClick={() => {
-                      setSeason(se + 1)
-                      setEpisodes(episodesTv(_.episode_count))
-                      console.log(_);
-                    }}
-                  >
-                    {se + 1}
-                  </Link>
-                ))}
-              </div>
+              {category === 'tv' && (
+                <>
+                  <h2>Seasons</h2>
+                  <div className="episodes-list">
+                    {detail?.seasons?.map((_, se) => (
+                      <Link
+                        to={{ pathname: `?episode=${se}` }}
+                        className="episode"
+                        style={season - 1 === se ? {
+                          backgroundColor: '#0d90f3'
+                        } : {}}
+                        key={se}
+                        onClick={() => {
+                          setSeason(se + 1)
+                          setEpisodes(episodesTv(_.episode_count))
+                          console.log(_);
+                        }}
+                      >
+                        {se + 1}
+                      </Link>
+                    ))}
+                  </div>
+                </>
+              )}
               {category === "tv" && (
                 <>
                   <h2>Episodes</h2>
