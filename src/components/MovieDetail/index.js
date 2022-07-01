@@ -18,10 +18,13 @@ import {
 
 function MovieDetail(props) {
   const { category, id } = useParams();
+  const [episode, setEpisode] = useState(1);
+  const [season, setSeason] = useState(1);
   const [movie, setMovie] = useState({});
   const [detail, setDetail] = useState({});
   const [genres, setGenres] = useState([]);
   const [comments, setComments] = useState([]);
+  const [episodes, setEpisodes] = useState([]);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [commentContent, setCommentContent] = useState("");
 
@@ -31,14 +34,18 @@ function MovieDetail(props) {
   const db = getFirestore();
 
   // Get episodes
-  const episodesTv = Array.from(
-    {
-      length:
-        detail?.next_episode_to_air?.episode_number ||
-        detail?.number_of_episodes,
-    },
-    (_, i) => i + 1
-  );
+  function episodesTv(value = detail?.next_episode_to_air?.episode_number || detail?.number_of_episodes) {
+    return Array.from(
+      {
+        length: value
+      },
+      (_, i) => i + 1
+    );
+  }
+
+  useEffect(() => {
+    episodesTv()
+  }, [season])
 
   // Get detail movie
   useEffect(() => {
@@ -114,7 +121,7 @@ function MovieDetail(props) {
       document.removeEventListener("keyup", enterEvent);
     };
   }, [handlePostComment]);
-
+  console.log(season);
   return (
     <div className="section">
       {movie ? (
@@ -122,17 +129,23 @@ function MovieDetail(props) {
           <div className="row">
             <div className="col-8 col-md-12 col-sm-12">
               <div className="video-container">
-                {/* <video controls>
-            <source src="https://viettrung258.work/film" />
-            Video is not supported!
-          </video> */}
-                <iframe
-                  title="video-detail"
-                  width="420"
-                  height="315"
-                  src={`https://www.youtube-nocookie.com/embed/${movie.key}`}
-                  // src={`https://2embed.org/embed/${detail.imdb_id}`}
-                ></iframe>
+                {category === 'movie' ?
+                  <iframe
+                    title="video-detail"
+                    width="420"
+                    height="450"
+                    // src={`https://www.youtube-nocookie.com/embed/${movie.key}`}
+                    src={`https://2embed.org/embed/${detail.imdb_id}`}
+                  ></iframe>
+                  :
+                  <iframe
+                    title="video-detail"
+                    width="420"
+                    height="450"
+                    // src={`https://www.youtube-nocookie.com/embed/${movie.key}`}
+                    src={`https://2embed.org/embed/${detail.id}/${season}/${episode}`}
+                  ></iframe>
+                }
               </div>
 
               <div className="movie-details">
@@ -164,18 +177,41 @@ function MovieDetail(props) {
                   <p>{detail.overview}</p>
                 </div>
               </div>
+              <h2>Seasons</h2>
+              <div className="episodes-list">
+                {detail?.seasons?.map((_, se) => (
+                  <Link
+                    to={{ pathname: `?episode=${se}` }}
+                    className="episode"
+                    style={season - 1 === se ? {
+                      backgroundColor: '#0d90f3'
+                    } : {}}
+                    key={se}
+                    onClick={() => {
+                      setSeason(se + 1)
+                      setEpisodes(episodesTv(_.episode_count))
+                      console.log(_);
+                    }}
+                  >
+                    {se + 1}
+                  </Link>
+                ))}
+              </div>
               {category === "tv" && (
                 <>
                   <h2>Episodes</h2>
                   <div className="episodes-list">
-                    {episodesTv.map((episode) => (
+                    {episodes.map((ep) => (
                       <Link
-                        to={{ pathname: `?episode=${episode}` }}
-                        activeclassname="active"
+                        to={{ pathname: `?episode=${ep}` }}
                         className="episode"
-                        key={episode}
+                        style={episode === ep ? {
+                          backgroundColor: '#0d90f3'
+                        } : {}}
+                        key={ep}
+                        onClick={() => setEpisode(ep)}
                       >
-                        {episode}
+                        {ep}
                       </Link>
                     ))}
                   </div>
