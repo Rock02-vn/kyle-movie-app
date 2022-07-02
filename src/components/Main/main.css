@@ -46,6 +46,11 @@
   font-size: 5rem;
   line-height: 5rem;
   font-weight: 900;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .movie-infos {
