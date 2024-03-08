@@ -135,7 +135,7 @@ function MovieDetail(props) {
                     width="420"
                     height="450"
                     // src={`https://www.youtube-nocookie.com/embed/${movie.key}`}
-                    src={`https://2embed.org/embed/${detail.imdb_id}`}
+                    src={`https://2embed.cc/embed/${detail.imdb_id}`}
                   ></iframe>
                   :
                   <iframe
@@ -143,7 +143,7 @@ function MovieDetail(props) {
                     width="420"
                     height="450"
                     // src={`https://www.youtube-nocookie.com/embed/${movie.key}`}
-                    src={`https://2embed.org/embed/${detail.id}/${season}/${episode}`}
+                    src={`https://2embed.cc/embed/${detail.id}/${season}/${episode}`}
                   ></iframe>
                 }
               </div>
