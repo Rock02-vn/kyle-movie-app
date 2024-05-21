@@ -20,10 +20,10 @@ function SpecialMovieItem(props) {
               <i className="bx bxs-star"></i>
               <span>{specialMovie.vote_average}</span>
             </div>
-            <div className="movie-info">
+            {/* <div className="movie-info">
               <i className="bx bxs-time"></i>
               <span>120 mins</span>
-            </div>
+            </div> */}
             <div className="movie-info">
               <span>HD</span>
             </div>

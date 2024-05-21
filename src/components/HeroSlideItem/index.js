@@ -5,6 +5,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 function HeroSlideItem(props) {
   const { hero } = props;
+  console.log(hero);
   return (
     <>
       <LazyLoadImage src={apiConfig.originalImage(hero.backdrop_path)} alt={hero.title} />
@@ -17,10 +18,10 @@ function HeroSlideItem(props) {
               <i className="bx bxs-star"></i>
               <span>{hero.vote_average}</span>
             </div>
-            <div className="movie-info">
+            {/* <div className="movie-info">
               <i className="bx bxs-time"></i>
               <span>120 mins</span>
-            </div>
+            </div> */}
             <div className="movie-info">
               <span>HD</span>
             </div>

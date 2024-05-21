@@ -11,7 +11,7 @@ function Footer(props) {
           <div className="row">
             <div className="col-4 col-md-6 col-sm-12">
               <div className="content">
-                <a href="=" className="logo">
+                <a href="/" className="logo">
                   <i className="bx bx-movie-play bx-tada main-color"></i>Ky
                   <span className="main-color">l</span>e
                 </a>
@@ -22,13 +22,28 @@ function Footer(props) {
                   Dolores, quibusdam?
                 </p>
                 <div className="social-list">
-                  <a href="=" className="social-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.facebook.com/nearly.rock/"
+                    className="social-item"
+                  >
                     <i className="bx bxl-facebook"></i>
                   </a>
-                  <a href="=" className="social-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.facebook.com/nearly.rock/"
+                    className="social-item"
+                  >
                     <i className="bx bxl-twitter"></i>
                   </a>
-                  <a href="=" className="social-item">
+                  <a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.facebook.com/nearly.rock/"
+                    className="social-item"
+                  >
                     <i className="bx bxl-instagram"></i>
                   </a>
                 </div>
@@ -43,16 +58,40 @@ function Footer(props) {
                     </p>
                     <ul className="footer-menu">
                       <li>
-                        <a href="=">About us</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          About us
+                        </a>
                       </li>
                       <li>
-                        <a href="=">My profile</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          My profile
+                        </a>
                       </li>
                       <li>
-                        <a href="=">Pricing plans</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          Pricing plans
+                        </a>
                       </li>
                       <li>
-                        <a href="=">Contacts</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          Contacts
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -64,16 +103,40 @@ function Footer(props) {
                     </p>
                     <ul className="footer-menu">
                       <li>
-                        <a href="=">About us</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          About us
+                        </a>
                       </li>
                       <li>
-                        <a href="=">My profile</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          My profile
+                        </a>
                       </li>
                       <li>
-                        <a href="=">Pricing plans</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          Pricing plans
+                        </a>
                       </li>
                       <li>
-                        <a href="=">Contacts</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          Contacts
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -85,16 +148,40 @@ function Footer(props) {
                     </p>
                     <ul className="footer-menu">
                       <li>
-                        <a href="=">About us</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          About us
+                        </a>
                       </li>
                       <li>
-                        <a href="=">My profile</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          My profile
+                        </a>
                       </li>
                       <li>
-                        <a href="=">Pricing plans</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          Pricing plans
+                        </a>
                       </li>
                       <li>
-                        <a href="=">Contacts</a>
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
+                          Contacts
+                        </a>
                       </li>
                     </ul>
                   </div>
@@ -106,12 +193,20 @@ function Footer(props) {
                     </p>
                     <ul className="footer-menu">
                       <li>
-                        <a href="=">
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
                           <img src={google} alt="google" />
                         </a>
                       </li>
                       <li>
-                        <a href="=">
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          href="https://www.facebook.com/nearly.rock/"
+                        >
                           <img src={appStore} alt="appStore" />
                         </a>
                       </li>

@@ -19,10 +19,10 @@ const MovieSwiperItem = ({ category, item }) => {
                 <i className="bx bxs-star"></i>
                 <span>{item.vote_average}</span>
               </div>
-              <div className="movie-info">
+              {/* <div className="movie-info">
                 <i className="bx bxs-time"></i>
                 <span>120 mins</span>
-              </div>
+              </div> */}
               <div className="movie-info">
                 <span>HD</span>
               </div>

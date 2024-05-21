@@ -27,7 +27,7 @@ function Main(props) {
       try {
         const response = await tmdbApi.getMoviesList(movieType.popular, { params })
         setHeroSlides(response?.results.slice(0, 5))
-        setSpecialMovie(response?.results[15])
+        setSpecialMovie(response?.results[0])
         setTopMovies(response?.results.slice(10, 20))
       } catch (error) {
         console.log(error);
